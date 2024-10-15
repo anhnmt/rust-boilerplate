@@ -1,0 +1,14 @@
+
+services:
+  rust-boilerplate:
+    container_name: rust-boilerplate
+    image: anhnmt/rust-boilerplate:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    networks:
+      - base-project
+
+networks:
+  base-project:
+    external: true
