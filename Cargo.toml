@@ -1,0 +1,14 @@
+[package]
+name = "rust-boilerplate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+# Minimizing Rust Binary Size
+# https://github.com/johnthagen/min-sized-rust
+[profile.release]
+strip = true  # Automatically strip symbols from the binary.
+opt-level = "z"  # Optimize for size.
+lto = true
+codegen-units = 1
