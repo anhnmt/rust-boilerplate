@@ -16,6 +16,7 @@ tasks:
       - cargo watch -x run
 
   udeps:
+    aliases: [deps]
     desc: Find unused dependencies
     cmds:
       - cargo +nightly udeps
