@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    command:
+      - hello
     networks:
       - base-project
 
