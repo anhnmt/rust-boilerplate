@@ -9,6 +9,8 @@ tracing = "0.1.40"
 clap = { version = "4.5.20", features = ["derive"] }
 tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
 anyhow = "1.0.90"
+config = { version = "0.14.0", features = ["yaml"] }
+serde = "1.0.210"
 
 # Minimizing Rust Binary Size
 # https://github.com/johnthagen/min-sized-rust

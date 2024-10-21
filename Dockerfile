@@ -43,6 +43,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
 FROM scratch AS runtime
 WORKDIR /app
 
+COPY config.example.yml ./
 COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/rust-boilerplate /usr/local/bin/app
 
 ENTRYPOINT ["/usr/local/bin/app"]
