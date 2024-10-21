@@ -10,10 +10,10 @@ tasks:
           cargo-watch \
           cargo-udeps
 
-  watch:
+  dev:
     desc: Watch and run
     cmds:
-      - cargo watch -x run
+      - cargo watch -x "run {{.CLI_ARGS}}"
 
   udeps:
     aliases: [deps]
