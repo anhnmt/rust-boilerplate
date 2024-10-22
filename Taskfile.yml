@@ -22,6 +22,12 @@ tasks:
     cmds:
       - cargo +nightly udeps
 
+  clean:
+    aliases: [ c ]
+    desc: Remove generated artifacts
+    cmds:
+      - cargo clean {{.CLI_ARGS}}
+
   migrate:add:
     aliases: [ ma ]
     desc: Add migrations
