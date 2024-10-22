@@ -2,6 +2,12 @@
 
 This is a boilerplate for Rust projects.
 
+## Configuration
+
+```bash
+cp config.example.yml config.yml
+```
+
 ## Taskfile
 
 This project uses the [Taskfile](https://taskfile.dev) to manage the project.

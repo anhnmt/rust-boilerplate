@@ -2,13 +2,14 @@ version: '3'
 
 tasks:
   install:
-    aliases: [i]
+    aliases: [ i ]
     desc: Install cli tools
     cmds:
       - |
         cargo binstall \
           cargo-watch \
-          cargo-udeps
+          cargo-udeps \
+          sqlx-cli
 
   dev:
     desc: Watch and run
@@ -16,7 +17,25 @@ tasks:
       - cargo watch -x "run {{.CLI_ARGS}}"
 
   udeps:
-    aliases: [deps]
+    aliases: [ d, deps ]
     desc: Find unused dependencies
     cmds:
       - cargo +nightly udeps
+
+  migrate:add:
+    aliases: [ ma ]
+    desc: Add migrations
+    cmds:
+      - sqlx migrate add -r {{.CLI_ARGS}}
+
+  migrate:run:
+    aliases: [ mr ]
+    desc: Run migrations
+    cmds:
+      - sqlx migrate run {{.CLI_ARGS}}
+
+  migrate:revert:
+    aliases: [ mre ]
+    desc: Revert migrations
+    cmds:
+      - sqlx migrate revert {{.CLI_ARGS}}

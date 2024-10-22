@@ -1,6 +1,7 @@
 use clap::{Parser, Subcommand};
-use tracing_subscriber::fmt::format;
 use common::config::Config;
+use common::database::{database_connection, migrate};
+use tracing_subscriber::fmt::format;
 
 #[derive(Parser)]
 struct Args {
@@ -10,7 +11,8 @@ struct Args {
 
 #[derive(Subcommand)]
 enum Command {
-    Hello
+    Migrate,
+    Hello,
 }
 
 #[tokio::main]
@@ -23,8 +25,19 @@ async fn main() -> anyhow::Result<()> {
     let config = Config::new()?;
     tracing::info!(?config);
 
+    let pool = database_connection(config.database).await?;
+    if pool.is_closed() {
+        tracing::error!("Failed to connect to database");
+        return Ok(());
+    }
+
     let args = Args::parse();
     match args.cmd {
+        Some(Command::Migrate) => {
+            tracing::info!("Migrations running...");
+            migrate(&pool).await?;
+            tracing::info!("Migrations ran successfully!");
+        }
         Some(Command::Hello) => {
             tracing::info!("Hello, world!")
         }

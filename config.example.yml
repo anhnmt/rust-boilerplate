@@ -3,8 +3,5 @@ list:
   - world
 
 database:
-  host: localhost
-  port: 5432
-  user: postgres
-  password: 123456A@
-  name: boilerplate
+  # postgresql://[user[:password]@][host][:port][/dbname][?param1=value1&...]
+  url: postgres://postgres:123456A@@localhost:5432/postgres

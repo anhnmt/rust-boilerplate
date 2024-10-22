@@ -27,9 +27,7 @@ impl Config {
             )
             .build()?;
 
-
         let config = config.try_deserialize::<Self>()?;
-
         Ok(config)
     }
 }
