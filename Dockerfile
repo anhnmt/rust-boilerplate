@@ -20,7 +20,7 @@ ENV RUSTC_WRAPPER=sccache SCCACHE_DIR=/sccache
 FROM base AS planner
 
 COPY Cargo.toml ./
-COPY ./src ./src
+COPY ./crates ./crates
 
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=$SCCACHE_DIR,sharing=locked \
@@ -44,6 +44,6 @@ FROM scratch AS runtime
 WORKDIR /app
 
 COPY config.example.yml ./
-COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/rust-boilerplate /usr/local/bin/app
+COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/app /usr/local/bin/app
 
 ENTRYPOINT ["/usr/local/bin/app"]
