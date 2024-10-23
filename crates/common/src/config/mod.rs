@@ -15,7 +15,7 @@ impl Config {
         let config = config::Config::builder()
             // Add in the default configuration file
             .add_source(vec![
-                File::with_name("config.example"),
+                File::with_name("config.example").required(false),
                 File::with_name("config").required(false),
             ])
             // Add in settings from the environment
@@ -23,6 +23,7 @@ impl Config {
                 Environment::default()
                     .try_parsing(true)
                     .separator("_")
+                    .with_list_parse_key("list")
                     .list_separator(" ")
             )
             .build()?;
