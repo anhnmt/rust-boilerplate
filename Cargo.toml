@@ -10,9 +10,9 @@ edition = "2021"
 common = { path = "./crates/common" }
 tracing-subscriber = "0.3.18"
 tracing = "0.1.40"
-tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
-anyhow = "1.0.90"
-serde = { version = "1.0.210", features = ["derive"] }
+tokio = { version = "1.41.0", features = ["macros", "rt-multi-thread"] }
+anyhow = "1.0.91"
+serde = { version = "1.0.213", features = ["derive"] }
 sqlx = { version = "0.8.2", features = ["postgres", "runtime-tokio"] }
 
 # Minimizing Rust Binary Size
